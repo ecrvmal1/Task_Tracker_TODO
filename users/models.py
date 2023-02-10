@@ -11,9 +11,10 @@ from django.contrib.auth.models import AbstractUser, PermissionsMixin
 
 
 class Users(AbstractUser):
+    username = None
     first_name = models.CharField('first name', max_length=64, blank=False)
     last_name = models.CharField('last name', max_length=64, blank=False)
     birthday_year = models.PositiveIntegerField()
-    email_address = models.EmailField('email address', blank=False, unique=True)
-    REQUIRED_FIELDS = ['first_name', 'last_name', 'birthday_year', 'email_address',
-                       ]
+    email = models.EmailField('email', blank=False, unique=True)
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'birthday_year', ]
