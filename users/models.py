@@ -18,3 +18,13 @@ class Users(AbstractUser):
     email = models.EmailField('email', blank=False, unique=True)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'last_name', 'birthday_year', ]
+
+    def __str__(self):
+        return f'({self.first_name} {self.last_name} )'
+        # return ['first_name', 'last_name']
+
+    # def get_first_name(self, user):
+    #     return user.first_name
+    #
+    # def get_last_name(self, user):
+    #     return user.last_name
