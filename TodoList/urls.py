@@ -18,12 +18,15 @@ from django.urls import path, include
 
 from rest_framework.routers import DefaultRouter  # this helps to define entry points
 from users.views import UserModelViewSet
+from TODO.views import ProjectModelViewSet, TODOModelViewSet
 
 router = DefaultRouter()  # initiate the class
 
 # register entry point to model
 # entry point = users , that we had imported
 router.register('users', UserModelViewSet)
+router.register('projects', ProjectModelViewSet)
+router.register("TODO", TODOModelViewSet)
 # router.register('books', UserModelViewSet)
 
 urlpatterns = [
