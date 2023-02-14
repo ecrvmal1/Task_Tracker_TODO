@@ -1,13 +1,14 @@
 from django.db import models
 from users.models import Users
+from django.forms.widgets import boolean_check
 
 
 # Create your models here.
 class Project(models.Model):
     project_name = models.CharField(max_length=64, unique=True, blank=False)
     project_users = models.ManyToManyField(Users)
-    project_link = models.PositiveIntegerField()
-    project_date_created = models.DateField(auto_created=True)
+    # project_link = models.PositiveIntegerField()
+    project_date_created = models.DateField(auto_now=True)
     project_url = models.URLField(blank=True)
 
     def __str__(self):
@@ -15,11 +16,11 @@ class Project(models.Model):
 
 
 class TODO(models.Model):
-    note_text = models.CharField(max_length=256)
-    note_author = models.OneToOneField(Users, on_delete=models.CASCADE)
-    note_daytime_created = models.DateTimeField(auto_created=True)
-    note_active = models.BooleanField(default=False)
-    note_project = models.OneToOneField(Project, default=0, on_delete=models.CASCADE)
+    note_text = models.CharField(max_length=256, unique=False)
+    note_author = models.ForeignKey(Users, on_delete=models.CASCADE, unique=False, blank=False)
+    note_daytime_created = models.DateTimeField(auto_now=True)
+    note_active = models.BooleanField(default=True)
+    note_project = models.ForeignKey(Project, blank=False, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.note_text[20::]}'
+        return f'{self.note_text[10::]}'
