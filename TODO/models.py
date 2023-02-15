@@ -11,8 +11,8 @@ class Project(models.Model):
     project_date_created = models.DateField(auto_now=True)
     project_url = models.URLField(blank=True)
 
-    def __str__(self):
-        return self.project_name
+    def __str__(self) -> str:
+        return f'{self.project_name}'
 
 
 class TODO(models.Model):
@@ -22,5 +22,5 @@ class TODO(models.Model):
     note_active = models.BooleanField(default=True)
     note_project = models.ForeignKey(Project, blank=False, on_delete=models.CASCADE)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f'{self.note_text[:10]}'
