@@ -22,9 +22,3 @@ class Users(AbstractUser):
     def __str__(self):
         return f'({self.first_name} {self.last_name} )'
         # return ['first_name', 'last_name']
-
-    # def get_first_name(self, user):
-    #     return user.first_name
-    #
-    # def get_last_name(self, user):
-    #     return user.last_name

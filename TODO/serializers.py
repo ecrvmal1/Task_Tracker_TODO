@@ -5,7 +5,7 @@ from .models import Project, TODO
 
 
 class ProjectModelSerializer(ModelSerializer):
-    project_users = serializers.StringRelatedField(many=True)
+    # project_users = serializers.StringRelatedField(many=True)
 
     class Meta:
         model = Project
@@ -13,8 +13,12 @@ class ProjectModelSerializer(ModelSerializer):
 
 
 class TODOModelSerializer(ModelSerializer):
-    note_author = serializers.StringRelatedField()
-    note_project = serializers.StringRelatedField()
+    # note_author = serializers.StringRelatedField()
+    # note_project = serializers.StringRelatedField()
+    # note_text = serializers.StringRelatedField()
+    # note_daytime_created = serializers.StringRelatedField()
+
+    # note_active =
 
     class Meta:
         model = TODO
