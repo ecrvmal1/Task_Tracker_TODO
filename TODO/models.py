@@ -23,4 +23,4 @@ class TODO(models.Model):
     note_project = models.ForeignKey(Project, blank=False, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.note_text[10::]}'
+        return f'{self.note_text[:10]}'
