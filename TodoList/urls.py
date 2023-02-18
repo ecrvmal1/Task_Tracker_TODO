@@ -17,16 +17,16 @@ from django.contrib import admin
 from django.urls import path, include
 
 from rest_framework.routers import DefaultRouter  # this helps to define entry points
-from users.views import UserModelViewSet
-from TODO.views import ProjectModelViewSet, TODOModelViewSet
+from users.views import UsersCustomViewSet
+from TODO.views import ProjectCustomViewSet, TODOCustomViewSet, TODODjangoFilterViewSet
 
 router = DefaultRouter()  # initiate the class
 
 # register entry point to model
 # entry point = users , that we had imported
-router.register('users', UserModelViewSet)
-router.register('projects', ProjectModelViewSet)
-router.register("TODO", TODOModelViewSet)
+router.register('users', UsersCustomViewSet, basename='UserList')
+router.register('projects', ProjectCustomViewSet, basename='ProjectList')
+router.register('TODO', TODOCustomViewSet, basename='TODO_List')
 # router.register('books', UserModelViewSet)
 
 urlpatterns = [
