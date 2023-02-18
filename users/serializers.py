@@ -6,7 +6,7 @@ from .models import Users
 
 # This module returns object (serialized data)
 
-class UserModelSerializer(ModelSerializer):
+class UsersModelSerializer(ModelSerializer):
     class Meta:
         model = Users
         # fields = '__all__'
