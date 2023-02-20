@@ -1,13 +1,9 @@
-from django.shortcuts import render
-
-from rest_framework.viewsets import ModelViewSet
 from .models import Project, TODO
 from .serializers import ProjectModelSerializer, TODOModelSerializer
-from rest_framework import mixins
+from rest_framework import mixins, pagination
 from rest_framework import viewsets
-from rest_framework.pagination import LimitOffsetPagination
-from rest_framework.viewsets import ModelViewSet
-from .filters import TODOFilter
+
+from .filters import TODOFilter, ProjectFilter
 from django_filters import rest_framework as filters
 
 
@@ -22,11 +18,10 @@ from django_filters import rest_framework as filters
 # mixins.DestroyModelMixin  single model instance.
 # mixins.UpdateModelMixin single model instance.
 #
-# viewsets.GenericViewSet):
 
 
-class ProjectLimitOffsetPagination(LimitOffsetPagination):
-    default_limit = 10
+class ProjectPagination(pagination.PageNumberPagination):
+    page_size = 2
 
 
 class ProjectCustomViewSet(mixins.CreateModelMixin,
@@ -34,24 +29,17 @@ class ProjectCustomViewSet(mixins.CreateModelMixin,
                            mixins.UpdateModelMixin, viewsets.GenericViewSet):
     queryset = Project.objects.all()
     serializer_class = ProjectModelSerializer
-    pagination_class = ProjectLimitOffsetPagination
+    pagination_class = ProjectPagination
 
-    # make this filter works!
-    def get_queryset(self):
-        return Project.objects.filter(project_name__contains='Speech')
-
-
-# class TODOModelViewSet(ModelViewSet):
-#     queryset = TODO.objects.all()
-#     serializer_class = TODOModelSerializer
+    # фильтрацию по совпадению части названия проекта
+    # def get_queryset(self):
+    #     return Project.objects.filter(project_name__contains='Speech')
+    filter_backends = (filters.DjangoFilterBackend,)  # или так
+    filterset_class = ProjectFilter
 
 
-class TODOLimitOffsetPagination(LimitOffsetPagination):
-    default_limit = 20
-
-
-class TODODjangoFilterViewSet(ModelViewSet):
-    filterset_fields = ['project_name']
+class TODOPagination(pagination.PageNumberPagination):
+    pagination.PageNumberPagination.page_size = 4
 
 
 class TODOCustomViewSet(mixins.CreateModelMixin,
@@ -59,15 +47,10 @@ class TODOCustomViewSet(mixins.CreateModelMixin,
                         mixins.UpdateModelMixin, viewsets.GenericViewSet):
     queryset = TODO.objects.all()
     serializer_class = TODOModelSerializer
-    filterset_fields = ['note_project']
+    pagination_class = TODOPagination
 
-    # class Meta:
-    #     model = TODO
-    #     fields = ['project_name']
+    # filter_backends = (filters.DjangoFilterBackend,)  # или так
+    # filterset_fields = ['note_project', ]
 
-# class TODODjangoFilterViewSet(ModelViewSet):
-#     queryset = TODO.objects.all()
-#     serializer_class = TODOModelSerializer
-#     filterset_fields = ['project_name']
-
-# class # Check how to redefine delete  to mark as project "inactive"
+    filter_backends = (filters.DjangoFilterBackend,)  # или так
+    filterset_class = TODOFilter

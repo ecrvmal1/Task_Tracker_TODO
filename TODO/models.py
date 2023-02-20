@@ -24,3 +24,7 @@ class TODO(models.Model):
 
     def __str__(self) -> str:
         return f'{self.note_text[:10]}'
+
+    def delete(self, *args):
+        self.note_active = False
+        self.save()
