@@ -7,7 +7,6 @@ from django.forms.widgets import boolean_check
 class Project(models.Model):
     project_name = models.CharField(max_length=64, unique=True, blank=False)
     project_users = models.ManyToManyField(Users)
-    # project_link = models.PositiveIntegerField()
     project_date_created = models.DateField(auto_now=True)
     project_url = models.URLField(blank=True)
 
