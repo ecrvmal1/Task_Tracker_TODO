@@ -18,7 +18,9 @@ from django.urls import path, include
 
 from rest_framework.routers import DefaultRouter  # this helps to define entry points
 from users.views import UsersCustomViewSet
-from TODO.views import ProjectCustomViewSet, TODOCustomViewSet, TODODjangoFilterViewSet
+from TODO.views import ProjectCustomViewSet, TODOCustomViewSet
+
+# from TODO.views import TODODjangoFilterViewSet
 
 router = DefaultRouter()  # initiate the class
 
