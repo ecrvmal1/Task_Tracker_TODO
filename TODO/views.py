@@ -20,8 +20,8 @@ from django_filters import rest_framework as filters
 #
 
 
-class ProjectPagination(pagination.PageNumberPagination):
-    page_size = 2
+# class ProjectPagination(pagination.PageNumberPagination):
+#     page_size = 2
 
 
 class ProjectCustomViewSet(mixins.CreateModelMixin,
@@ -29,17 +29,17 @@ class ProjectCustomViewSet(mixins.CreateModelMixin,
                            mixins.UpdateModelMixin, viewsets.GenericViewSet):
     queryset = Project.objects.all()
     serializer_class = ProjectModelSerializer
-    pagination_class = ProjectPagination
+    # pagination_class = ProjectPagination
 
     # фильтрацию по совпадению части названия проекта
     # def get_queryset(self):
     #     return Project.objects.filter(project_name__contains='Speech')
     filter_backends = (filters.DjangoFilterBackend,)  # или так
-    filterset_class = ProjectFilter
+    # filterset_class = ProjectFilter
 
 
-class TODOPagination(pagination.PageNumberPagination):
-    pagination.PageNumberPagination.page_size = 4
+# class TODOPagination(pagination.PageNumberPagination):
+#     pagination.PageNumberPagination.page_size = 4
 
 
 class TODOCustomViewSet(mixins.CreateModelMixin,
@@ -47,10 +47,10 @@ class TODOCustomViewSet(mixins.CreateModelMixin,
                         mixins.UpdateModelMixin, viewsets.GenericViewSet):
     queryset = TODO.objects.all()
     serializer_class = TODOModelSerializer
-    pagination_class = TODOPagination
+    # pagination_class = TODOPagination
 
     # filter_backends = (filters.DjangoFilterBackend,)  # или так
     # filterset_fields = ['note_project', ]
 
-    filter_backends = (filters.DjangoFilterBackend,)  # или так
-    filterset_class = TODOFilter
+    # filter_backends = (filters.DjangoFilterBackend,)  # или так
+    # filterset_class = TODOFilter
