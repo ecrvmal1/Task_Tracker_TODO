@@ -1,14 +1,27 @@
 import React from "react";
+import '../App.css';
 
 
 
 const MenuDiv = () => {
     return (
-        <div class="App-menu">
-        <div class="App-menu-item"> <a href="#">Users</a> </div>
-        <div class="App-menu-item"> <a href="#">ToDo</a></div>
-        <div class="App-menu-item"> <a href="#">Projects</a> </div>
-        </div>
+    <div className="Menu-nav">
+        <nav>
+            <ul>
+                <li className="Menu-li">
+                    <a href="/users">Users</a>
+                </li>
+                <li className="Menu-li">
+                    <a href="/projects">Projects</a>
+                </li>
+                <li className="Menu-li">
+                    <a href="/TODO">TODO</a>
+                </li>
+            </ul>
+
+        </nav>
+    </div>
+
        )
     }
 
