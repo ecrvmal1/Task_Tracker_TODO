@@ -5,14 +5,38 @@ import axios from 'axios';
 import {HashRouter,Route,BrowserRouter,Link,Switch,Redirect} from "react-router-dom";
 
 
+let usernames =""
 
 const ProjectData = ({project, users})  => {
     console.log( "projectData works");
     console.log('project ', project);
-    const usr_indexes = project[0].project_users;
-    console.log('usr_indexes   ', usr_indexes);
+ const usr_indexes = project.project_users;
+console.log('usr_indexes   ', usr_indexes);
+  const proj_users = users.filter((elem, index) =>{
+               return   usr_indexes.includes(index)
+                } );
+                console.log('proj_users  ', proj_users);
+              usernames =  proj_users.map((usr) => {
+                  return usr.first_name}).join(', ')
+                                  console.log('usernames ', usernames);
 
-return (<div></div>)
+return (
+    <tr>
+        <td>
+             {project.project_name}
+        </td>
+        <td>
+            {usernames}
+        </td>
+        <td>
+            {project.project_date_created}
+        </td>
+        <td>
+            {project.project_url}
+        </td>
+    </tr>
+
+    )
 }
 
 const ProjectDetails = ({projects, users}) => {
@@ -21,21 +45,21 @@ const ProjectDetails = ({projects, users}) => {
 //      console.log('projects =  ', projects)
       let project = projects.filter((project, index) => index === parseInt(id))
 //      let project = projects.filter [parseInt(id)]
-       console.log('project ', project)
+ //      console.log('project ', project)
 
 
     return(
         <table>
             <th>
-                ID
+                Project_Name
             </th>
                <th>
-                Name
+                Members
             </th>
                <th>
-                Author
+                Date of creation
             </th>
-          { project => <ProjectData project={project} users={users}/>}
+          { project.map((project) => <ProjectData project={project} users={users}/>)}
         </table>
     )
 
