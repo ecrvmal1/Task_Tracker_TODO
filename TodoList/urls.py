@@ -17,8 +17,11 @@ from django.contrib import admin
 from django.urls import path, include
 
 from rest_framework.routers import DefaultRouter  # this helps to define entry points
-from users.views import UsersCustomViewSet
+# from users.views import UsersCustomViewSet
+from users.views import UsersModelViewSet
 from TODO.views import ProjectCustomViewSet, TODOCustomViewSet
+from TODO.views import ProjectModelViewSet, TODOModelViewSet
+from rest_framework.authtoken import views
 
 # from TODO.views import TODODjangoFilterViewSet
 
@@ -26,13 +29,14 @@ router = DefaultRouter()  # initiate the class
 
 # register entry point to model
 # entry point = users , that we had imported
-router.register('users', UsersCustomViewSet, basename='UserList')
-router.register('projects', ProjectCustomViewSet, basename='ProjectList')
-router.register('TODO', TODOCustomViewSet, basename='TODO_List')
+router.register('users', UsersModelViewSet, basename='UserList')
+router.register('projects', ProjectModelViewSet, basename='ProjectList')
+router.register('TODO', TODOModelViewSet, basename='TODO_List')
 # router.register('books', UserModelViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('api/', include(router.urls)),  # connect  path = api/    router
+    path('api-token-auth/', views.obtain_auth_token)
 ]

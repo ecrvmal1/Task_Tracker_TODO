@@ -2,6 +2,8 @@ from .models import Project, TODO
 from .serializers import ProjectModelSerializer, TODOModelSerializer
 from rest_framework import mixins, pagination
 from rest_framework import viewsets
+from rest_framework.viewsets import ModelViewSet
+from rest_framework.permissions import IsAdminUser, BasePermission
 
 from .filters import TODOFilter, ProjectFilter
 from django_filters import rest_framework as filters
@@ -34,12 +36,17 @@ class ProjectCustomViewSet(mixins.CreateModelMixin,
     # фильтрацию по совпадению части названия проекта
     # def get_queryset(self):
     #     return Project.objects.filter(project_name__contains='Speech')
-    filter_backends = (filters.DjangoFilterBackend,)  # или так
+    # filter_backends = (filters.DjangoFilterBackend,)  # или так
     # filterset_class = ProjectFilter
 
 
 # class TODOPagination(pagination.PageNumberPagination):
 #     pagination.PageNumberPagination.page_size = 4
+
+
+class ProjectModelViewSet(ModelViewSet):
+    queryset = Project.objects.all()
+    serializer_class = ProjectModelSerializer
 
 
 class TODOCustomViewSet(mixins.CreateModelMixin,
@@ -54,3 +61,8 @@ class TODOCustomViewSet(mixins.CreateModelMixin,
 
     # filter_backends = (filters.DjangoFilterBackend,)  # или так
     # filterset_class = TODOFilter
+
+
+class TODOModelViewSet(ModelViewSet):
+    queryset = TODO.objects.all()
+    serializer_class = TODOModelSerializer

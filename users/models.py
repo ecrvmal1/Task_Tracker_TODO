@@ -11,14 +11,15 @@ from django.contrib.auth.models import AbstractUser, PermissionsMixin
 
 
 class Users(AbstractUser):
-    username = None
-    first_name = models.CharField('first name', max_length=64, blank=False)
-    last_name = models.CharField('last name', max_length=64, blank=False)
-    birthday_year = models.PositiveIntegerField()
-    email = models.EmailField('email', blank=False, unique=True)
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', 'last_name', 'birthday_year', ]
+    username = models.CharField('username', max_length=64, unique=True)
+    first_name = models.CharField('first name', max_length=64, blank=True, unique=False)
+    last_name = models.CharField('last name', max_length=64, blank=True, unique=False)
+    birthday_year = models.PositiveIntegerField(blank=True, unique=False)
+    email = models.EmailField('email', blank=True, unique=False)
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'email', 'birthday_year']
 
     def __str__(self) -> str:
-        return f'({self.first_name} {self.last_name} )'
+        return f'{self.username}'
         # return ['first_name', 'last_name']
+
+    USERNAME_FIELD = 'username'
