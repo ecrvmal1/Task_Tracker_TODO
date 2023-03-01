@@ -9,7 +9,7 @@ let projId = 0
 
 const ProjectItem = ({project, users, index}) => {
         let usernames = []
-       console.log('proj_Id = ', index)
+//       console.log('proj_Id = ', index)
      if (project.project_users) {
 
         //     console.log('users  ', users);
@@ -47,6 +47,8 @@ const ProjectItem = ({project, users, index}) => {
 const ProjectList = ({projects, users}) => {
     return (
         <table>
+        <tbody>
+              <tr>
             <th>
                 Project name
             </th>
@@ -59,12 +61,15 @@ const ProjectList = ({projects, users}) => {
             <th>
                 Project URL
             </th>
+    </tr>
             {projects.map((project, index) => <ProjectItem project = {project}
                                                     users = {users}
                                                     index = {index}
                                                           />
                         )}
-        </table>
+
+              </tbody>
+              </table>
        )
     }
 

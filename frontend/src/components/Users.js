@@ -25,6 +25,8 @@ const UserItem = ({user}) => {
 const UserList = ({users}) => {
     return (
         <table>
+            <tbody>
+            <tr>
             <th>
                 First name
             </th>
@@ -37,7 +39,9 @@ const UserList = ({users}) => {
             <th>
                 Email Address
             </th>
+            </tr>
             {users.map((user) => <UserItem user = {user} />)}
+            </tbody>
         </table>
        )
     }

@@ -20,10 +20,10 @@ const TodoItem = ({itemnote,users,projects}) => {
          author_name ="Not Defined"}}
 
      if (itemnote.note_project) {
-     console.log('itemnote.note_project   ', itemnote.note_project);
-     console.log('projects  ', projects);
+//     console.log('itemnote.note_project   ', itemnote.note_project);
+//     console.log('projects  ', projects);
         const project = projects.find((project) => project.id === itemnote.note_project )
-        console.log('project   ',project);
+//        console.log('project   ',project);
         try {
         project_name = project.project_name
         } catch(err) {
@@ -56,6 +56,8 @@ const TodoItem = ({itemnote,users,projects}) => {
 const TODOList = ({todolist,projects,users}) => {
     return (
         <table>
+           <tbody>
+            <tr>
             <th>
                 Text
             </th>
@@ -71,12 +73,14 @@ const TODOList = ({todolist,projects,users}) => {
             <th>
                 Used in Project
             </th>
+            </tr>
             {todolist.map((note) => <TodoItem
                 itemnote = {note}
                 users = {users}
                 projects = {projects}
                 />)}
-        </table>
+            </tbody>
+            </table>
        )
     }
 

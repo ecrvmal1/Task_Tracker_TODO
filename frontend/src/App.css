@@ -6,6 +6,7 @@ th {
 padding: 6px 10px;
 }
 
+
 .App {
   text-align: center;
 }
@@ -47,12 +48,21 @@ padding: 6px 10px;
   }
 }
 
-.Menu-nav {
+.Menu-div {
 margin-top: 0;
 margin-bottom: 30px;
+background-color: #d3d9fc;
+height: auto;
+display: flex;
+justify-content: space-between;
+width: 100%;
+}
+
+.Menu-nav {
+margin: 0px, 40 px;
 padding: 20px;
 background-color: #d3d9fc;
-width: 100%;
+width: auto;
 height: 50px;
 }
 
@@ -61,9 +71,6 @@ padding: 10px;
 display: inline;
 background-color: #d3d9fc;
 }
-
-
-
 
 .App-footer {
 margin-top: 100px;
@@ -74,4 +81,13 @@ height: 50px;
 position: absolute;
 top: calc(100vh - 200px);
 
+}
+
+.LoginForm {
+padding: 20px;
+}
+
+.LoginLine {
+margin: 5px;
+display: inline;
 }
