@@ -12,7 +12,7 @@ import LoginForm from './components/Auth.js'
 import NotFound404 from "./components/NotFound404.js";
 import {HashRouter,Route,BrowserRouter,Link,Switch,Redirect} from "react-router-dom";
 import Cookies from "universal-cookie";
-import BlancPage from  './components/blanc.js'
+import BlancPage from  './components/Blanc.js'
 
 
 
