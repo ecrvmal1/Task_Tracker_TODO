@@ -2,13 +2,13 @@
 
 import React from "react";
 import '../App.css';
-import logout from '../App.js'
+//import logout from '../App.js'
 
 
 
-const MenuDiv = ({username, status}) => {
+const MenuDiv = ({username, status, logout}) => {
     console.log('menu1',username,status)
-    if ( username == '_' && status ) {
+    if ( username === '_' && status ) {
     username = 'unknown'}
     console.log('menu2',username,status)
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDom from "react-dom"
 import axios from 'axios';
 import logo from './logo.svg';
 import './App.css';
@@ -31,19 +32,18 @@ class App extends React.Component {
         }
     }
 
-    createProject(id) {
-        const headers = this.get_headers()
-        axios.delete(`http://127.0.0.1:8000/api/projects/${id}`, {headers: headers})
-            .then(response =>{
-                this.setState({projects:this.state.books.filter((item) =>item.id !== id)})
-        }).catch(error => console.log(error))
-    }
-
-    }
-
-    deleteProject() {
-
-    }
+//    createProject(id) {
+//        const headers = this.get_headers()
+//        axios.delete(`http://127.0.0.1:8000/api/projects/${id}`, {headers: headers})
+//            .then(response =>{
+//                this.setState({projects:this.state.books.filter((item) =>item.id !== id)})
+//        }).catch(error => console.log(error))
+//    }
+//
+//
+//    deleteProject() {
+//
+//    }
 
     load_data() {
         const headers = this.get_headers()
@@ -75,40 +75,36 @@ class App extends React.Component {
     }
 
     get_token(username, password) {
-        console.log('get_token usern', username)
-        this.setState({username: username})
-        console.log('get_token ',this.state.username)
+        this.state.username = username
         axios.post('http://127.0.0.1:8000/api-token-auth/',
             {'username': username, 'password': password})
             .then(response => {
-                this.set_cookies(response.data['token'],username);
+//              console.log(response.data['token'])
+                this.set_token(response.data['token']);
             }).catch(error => alert('Не верный логин или пароль'))
-            console.log(' state',this.state.username , this.state.token)
-            window.location.replace('http://127.0.0.1:3000/users');
+            }
 
-}
-
-    set_cookies(token, username) {
-        console.log('set_token',token)
+    set_token(token) {
         // localStorage.setItem('token',token)
         // let item = localStorage.getItem('token')
         const cookies = new Cookies()
         cookies.set('token', token)
-        cookies.set('username', username)
-        this.setState({token: token},()=>this.load_data())
+        this.setState({'token': token}, () => this.load_data())
     }
 
     is_auth(){
             console.log('is_auth')
-        return !!this.state.token
+        if (this.state.token === "") {
+        return false }
+        else {
+        return true
+        }
     }
 
     get_headers(){
-
         let headers = {
         'Content-Type':'applications/json'
         }
-
         if(this.is_auth()){
             headers['Authorization'] = `Token ${this.state.token}`
         }
@@ -116,10 +112,16 @@ class App extends React.Component {
     }
 
     logout() {
-                console.log('logout')
+        console.log('logout')
+//        this.setState({token : ""})
+        this.setState({username:'_'})
         this.set_token('')
-         this.setState({username:''})
-         window.location.replace('http://127.0.0.1:3000/login');
+//        this.state.token = ""
+//        this.state.username = "_"
+        const cookies = new Cookies()
+        cookies.set("token", "")
+        cookies.set("username", "")
+        window.location.replace('http://127.0.0.1:3000/login');
     }
 
     get_token_from_cookies(){
@@ -130,16 +132,17 @@ class App extends React.Component {
         console.log('get_token_from_cookies username ',this.state.username)
         const token = cookies.get('token')
         console.log('get_token_from_cookies token',token)
-        if (token) {this.setState({'token': token},()=>this.load_data())}
-        else {}
-
+//        if (token) {this.setState({'token': token},()=>this.load_data())}
+//        else {
+//        window.location.replace('http://127.0.0.1:3000/login');}
+//        }
     }
 
 
 
 
     componentDidMount() {
-                    console.log('componentDidMount')
+        console.log('componentDidMount')
         this.get_token_from_cookies()
     }
 
@@ -150,7 +153,7 @@ class App extends React.Component {
                                 <alert return />
                      {/* <Route component={
                             () => <MenuDiv username={this.state.username} status={this.is_auth()}  />}/> */}
-                     <MenuDiv username={this.state.username} status={this.is_auth()}  />
+                     <MenuDiv username={this.state.username} status={this.is_auth()} logout={() => this.logout()} />
                     <Switch>
 
                       <Route exact path="/" component={
@@ -182,9 +185,9 @@ class App extends React.Component {
                        <Route exact path='/login' component={() => <LoginForm
                             get_token={(username, password) => this.get_token(username, password)}/>}/>
 
-                        <Route exact path='/logout' component={() => { this.logout();
+                {/* <Route exact path='/logout' component={() => { this.logout();
                         <LoginForm get_token={(username, password) => this.get_token(username, password)}/>
-                            }}/>
+                            }}/>   */}
 
                           <Route component={NotFound404}/>
                     </Switch>
