@@ -7,7 +7,7 @@ import {useParams} from "react-router-dom";
 let index = 0
 let projId = 0
 
-const ProjectItem = ({project, users, index}) => {
+const ProjectItem = ({project, users, index, deleteProject}) => {
         let usernames = []
 //       console.log('proj_Id = ', index)
      if (project.project_users) {
@@ -39,12 +39,16 @@ const ProjectItem = ({project, users, index}) => {
         <td>
             {project.project_url}
         </td>
+        <td>
+            <button onClick={()=> deleteProject(project.id)}type='button'>Delete</button>
+        </td>
+
     </tr>
 
     )
 }
 
-const ProjectList = ({projects, users}) => {
+const ProjectList = ({projects, users, deleteProject}) => {
     return (
         <table>
         <tbody>
@@ -65,6 +69,7 @@ const ProjectList = ({projects, users}) => {
             {projects.map((project, index) => <ProjectItem project = {project}
                                                     users = {users}
                                                     index = {index}
+                                                    deleteProject={deleteProject}
                                                           />
                         )}
 
