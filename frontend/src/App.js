@@ -12,10 +12,8 @@ import LoginForm from './components/Auth.js'
 import NotFound404 from "./components/NotFound404.js";
 import {HashRouter,Route,BrowserRouter,Link,Switch,Redirect} from "react-router-dom";
 import Cookies from "universal-cookie";
-<<<<<<< HEAD
 import BlancPage from  './components/Blanc.js'
-=======
->>>>>>> parent of 9b58dd3... Lesson7 Homework Comlete
+
 
 
 
@@ -33,8 +31,19 @@ class App extends React.Component {
         }
     }
 
+    createProject(id) {
+        const headers = this.get_headers()
+        axios.delete(`http://127.0.0.1:8000/api/projects/${id}`, {headers: headers})
+            .then(response =>{
+                this.setState({projects:this.state.books.filter((item) =>item.id !== id)})
+        }).catch(error => console.log(error))
+    }
 
+    }
 
+    deleteProject() {
+
+    }
 
     load_data() {
         const headers = this.get_headers()
@@ -154,6 +163,7 @@ class App extends React.Component {
                             () =>  <ProjectList
                             projects={this.state.projects}
                             users={this.state.users}
+                            deleteProject={(id)=> this.deleteProject(id)}
                             />}/>
 
                       <Route exact path="/TODO" component={
