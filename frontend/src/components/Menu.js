@@ -1,5 +1,5 @@
 
-
+import {Link} from "react-router-dom";
 import React from "react";
 import '../App.css';
 //import logout from '../App.js'
@@ -8,23 +8,25 @@ import '../App.css';
 
 const MenuDiv = ({username, status, logout}) => {
     console.log('menu1',username,status)
-    if ( username === '_' && status ) {
-    username = 'unknown'}
-    console.log('menu2',username,status)
-
-
+//    if ( username === '_' && status ) {
+//    username = 'unknown'}
+//    console.log('menu2',username,status)
     return (
     <div className="Menu-div">
         <nav >
             <ul className="Menu-nav">
                 <li className="Menu-li">
-                    <a href="/users">Users</a>
+                    {/* <a href="/users" > Users</a> */}
+                   <Link to="/users" > Users</Link>
+
                 </li>
                 <li className="Menu-li">
-                    <a href="/projects">Projects</a>
+                     {/* <a href="/projects" > Projects</a>  */}
+                     <Link to="/projects" onClick={() => window.location.reload()}>Projects</Link>
                 </li>
                 <li className="Menu-li">
-                    <a href="/TODO">TODO</a>
+                    {/*     <a href="/TODO" > TODO</a> */}
+                    <Link to="/TODO" onClick={() => window.location.reload()}>TODO</Link>
                 </li>
             </ul>
 
