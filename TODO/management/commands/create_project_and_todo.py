@@ -10,5 +10,5 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         for i in range(5):
             mixer.blend(Project)
-            mixer.blend(TODO)
+            # mixer.blend(TODO)
         print('done')

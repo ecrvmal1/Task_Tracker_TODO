@@ -11,9 +11,10 @@ import FooterDiv from './components/Footer.js';
 import MenuDiv from './components/Menu.js';
 import LoginForm from './components/Auth.js';
 import NotFound404 from "./components/NotFound404.js";
-import {HashRouter,Route,BrowserRouter,Link,Switch,Redirect} from "react-router-dom";
+import {HashRouter,Route,Routes,BrowserRouter,Link} from "react-router-dom";
 import Cookies from "universal-cookie";
 import BlancPage from  './components/Blanc.js'
+import { useNavigate , withRouter } from "react-router-dom";
 
 
 
@@ -31,13 +32,13 @@ class App extends React.Component {
         }
     }
 
-//    createProject(id) {
-//        const headers = this.get_headers()
-//        axios.delete(`http://127.0.0.1:8000/api/projects/${id}`, {headers: headers})
-//            .then(response =>{
-//                this.setState({projects:this.state.books.filter((item) =>item.id !== id)})
-//        }).catch(error => console.log(error))
-//    }
+    deleteProject(id) {
+        const headers = this.get_headers()
+        axios.delete(`http://127.0.0.1:8000/api/projects/${id}`, {headers: headers})
+            .then(response =>{
+                this.setState({projects:this.state.projects.filter((item) =>item.id !== id)})
+        }).catch(error => console.log(error))
+    }
 //
 //
 //    deleteProject() {
@@ -70,6 +71,7 @@ class App extends React.Component {
                 },()=>console.log("TODOlist",this.state.TODOList)
             )
         }).catch(error => console.log(error))
+
     }
 
     get_token(username, password) {
@@ -78,10 +80,14 @@ class App extends React.Component {
             .then(response => {
 //              console.log(response.data['token'])
                 this.set_token(response.data['token'])
-                this.setState({'username': username},
-                    ()=>  console.log("username",this.state.username))
-//                console.log('GEt_token', this.state.username, this.state.token)
+                this.setState({'username': username}, ()=>{
+                    console.log("username",this.state.username)})
+//                changes url without reloading
+                window.history.replaceState(null, null, '/users')
+
             }).catch(error => alert('Не верный логин или пароль'))
+
+
             }
 
     set_token(token) {
@@ -129,6 +135,16 @@ class App extends React.Component {
     get_token_from_cookies(){
         const cookies = new Cookies()
         const token = cookies.get('token')
+
+//        if (token) { this.setState({'token':token})}
+//        const username = cookies.get('username')
+//        if (!(username || username ==='_')) { this.setState({'username':username})}
+//        const users = cookies.get('users')
+//        if(users) { this.setState({'users':users})}
+//        const projects = cookies.get('projects')
+//        if ( projects) {this.setState({'projects':projects})}
+//        const TODOList = cookies.get('Todolist')
+//        if (TODOList) {this.setState({'TODOList':TODOList})}
         console.log('get_token_from_cookies token : ',token)
     }
 
@@ -138,47 +154,47 @@ class App extends React.Component {
 
     render () {
         return (
+        <div>
             <BrowserRouter>
-                <div>
+                <nav>
                     <MenuDiv username={this.state.username} status={this.is_auth()} logout={() => this.logout()}/>
+                    <Routes>
+                        <Route exact path="/" element={<UserList users={this.state.users}/>}/>
 
-                    <Switch>
-                        <Route exact path="/" component={() => <UserList users={this.state.users}/>}/>
+                        <Route path="/users" element={<UserList users={this.state.users}/>}/>
 
-                        <Route exact path="/users" component={() => <UserList users={this.state.users}/>}/>
-
-                        <Route exact path="/projects" component={() =>  <ProjectList
+                        <Route path="/projects" element={<ProjectList
                             projects={this.state.projects}
                             users={this.state.users}
                             deleteProject={(id)=> this.deleteProject(id)}
                             />}/>
 
-                        <Route exact path="/TODO" component={
-                            () =>  <TODOList
+                        <Route path="/TODO" element={
+                            <TODOList
                                 todolist={this.state.TODOList}
                                 projects={this.state.projects}
                                 users={this.state.users}
                             />}/>
 
-                        <Route path="/project/:id" component={
-                            () =>  <ProjectDetails
+                        <Route path="/project/:id" element={
+                            <ProjectDetails
                                 projects={this.state.projects}
                                 users={this.state.users}
                             />}/>
 
-                        <Route exact path='/login' component={() => <LoginForm
+                        <Route path='/login' element={<LoginForm
                             get_token={(username, password) => this.get_token(username, password)}/>}/>
 
                         {/* <Route exact path='/logout' component={() => { this.logout();
                         <LoginForm get_token={(username, password) => this.get_token(username, password)}/>
                             }}/>   */}
 
-                        <Route component={NotFound404}/>
-                    </Switch>
+                        <Route path="*" element={NotFound404}/>
+                    </Routes>
                     <FooterDiv />
-                </div>
+                </nav>
             </BrowserRouter>
-
+        </div>
 
         );
     }

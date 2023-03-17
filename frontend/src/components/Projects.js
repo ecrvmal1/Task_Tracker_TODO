@@ -28,7 +28,7 @@ const ProjectItem = ({project, users, index, deleteProject}) => {
     return (
     <tr>
         <td>
-              <a href={`/project/${index}`}>{project.project_name}</a>
+              <Link to={`/project/${index}`}>{project.project_name}</Link>
         </td>
         <td>
             {usernames}

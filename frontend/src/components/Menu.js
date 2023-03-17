@@ -16,17 +16,20 @@ const MenuDiv = ({username, status, logout}) => {
         <nav >
             <ul className="Menu-nav">
                 <li className="Menu-li">
-                    {/* <a href="/users" > Users</a> */}
-                   <Link to="/users" > Users</Link>
+                              {/* <a href="/users" > Users</a> */}
+                    {/* <Link to="/users" > Users</Link> */}
+                    <Link to="/users" > Users</Link>
 
                 </li>
                 <li className="Menu-li">
-                     {/* <a href="/projects" > Projects</a>  */}
-                     <Link to="/projects" onClick={() => window.location.reload()}>Projects</Link>
+                                {/* <a href="/projects" > Projects</a> */}
+                      {/* <Link to="/projects" onClick={() => window.location.reload()}>Projects</Link> */}
+                        <Link to="/projects" >Projects</Link>
                 </li>
                 <li className="Menu-li">
-                    {/*     <a href="/TODO" > TODO</a> */}
-                    <Link to="/TODO" onClick={() => window.location.reload()}>TODO</Link>
+                     {/* <a href="/TODO" > TODO</a> */}
+                     {/* <Link to="/TODO" onClick={() => window.location.reload()}>TODO</Link> */}
+                     <Link to="/TODO" > TODO</Link>
                 </li>
             </ul>
 
@@ -38,7 +41,7 @@ const MenuDiv = ({username, status, logout}) => {
                 </li>
                 <li className="Menu-li">
                   {status? <button onClick={()=> logout()}>LogOut</button> :
-                           <a href='/login'>LogIn</a>}
+                           <Link to='/login'>LogIn</Link>}
                 </li>
              </ul>
         </nav>
