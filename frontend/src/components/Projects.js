@@ -4,19 +4,23 @@ import {Link} from "react-router-dom";
 import {useParams} from "react-router-dom";
 
 
+
 let index = 0
 let projId = 0
 
 const ProjectItem = ({project, users, index, deleteProject}) => {
+
         let usernames = []
+
+
 //       console.log('proj_Id = ', index)
      if (project.project_users) {
 
         //     console.log('users  ', users);
              const usr_indexes = project.project_users
         //     console.log('usr_indexes   ', usr_indexes)
-             const proj_users = users.filter((elem, index) =>{
-               return   usr_indexes.includes(index)
+             const proj_users = users.filter((elem) =>{
+               return   usr_indexes.includes(elem.id)
                 } );
               usernames =  proj_users.map((usr) => {
                   return usr.first_name}).join(', ')
@@ -49,32 +53,46 @@ const ProjectItem = ({project, users, index, deleteProject}) => {
 }
 
 const ProjectList = ({projects, users, deleteProject}) => {
-    return (
-        <table>
-        <tbody>
-              <tr>
-            <th>
-                Project name
-            </th>
-            <th>
-                Project Users
-            </th>
-            <th>
-                Date Created
-            </th>
-            <th>
-                Project URL
-            </th>
-    </tr>
-            {projects.map((project, index) => <ProjectItem project = {project}
-                                                    users = {users}
-                                                    index = {index}
-                                                    deleteProject={deleteProject}
-                                                          />
-                        )}
 
-              </tbody>
-              </table>
+    return (
+        <div>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>
+                            Project name
+                        </th>
+                        <th>
+                            Project Users
+                        </th>
+                        <th>
+                            Date Created
+                        </th>
+                        <th>
+                            Project URL
+                        </th>
+                    </tr>
+                    {projects.map((project, index) => <ProjectItem project = {project}
+                                                            users = {users}
+                                                            index = {index}
+                                                            deleteProject={deleteProject}
+                                                                  />
+                    )}
+
+                </tbody>
+            </table>
+
+            <Link to="/project/create" className="link_btn">
+            New Project
+            </Link>
+
+            {/* <input type="button" onClick="location.href='/projects/create';" value="New Project"/> */}
+            {/* <form action="/projects/create"> */}
+               {/*  <input type="submit" value="New Project" />*/}
+               {/*  </form>  */}
+            {/* <button onClick={handleClickBtn , window.location.reload()} type="button">NewProject</button> */}
+
+        </div>
        )
     }
 

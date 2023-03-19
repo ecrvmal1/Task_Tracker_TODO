@@ -1,8 +1,9 @@
 import React from "react";
 import '../App.css';
-import {HashRouter,Route,BrowserRouter,Link,Switch,Redirect} from "react-router-dom";
+import {Link} from "react-router-dom";
+import {useParams} from "react-router-dom";
 
-const TodoItem = ({itemnote,users,projects}) => {
+const TodoItem = ({itemnote,users,projects,deleteTODO}) => {
 
     let activity =''
     let author_name = ''
@@ -22,7 +23,7 @@ const TodoItem = ({itemnote,users,projects}) => {
      if (itemnote.note_project) {
 //     console.log('itemnote.note_project   ', itemnote.note_project);
 //     console.log('projects  ', projects);
-        const project = projects.find((project) => project.id === itemnote.note_project )
+        const project = projects.filter((project) => project.id === itemnote.note_project )
 //        console.log('project   ',project);
         try {
         project_name = project.project_name
@@ -47,40 +48,50 @@ const TodoItem = ({itemnote,users,projects}) => {
         <td>
             {project_name}
         </td>
+          <td>
+            <button onClick={()=> deleteTODO(TODOList.id)}type='button'>Delete</button>
+        </td>
     </tr>
 
     )
  }
 
 
-const TODOList = ({todolist,projects,users}) => {
+const TODOList = ({todolist,projects,users,deleteTODO}) => {
     return (
-        <table>
-           <tbody>
-            <tr>
-            <th>
-                Text
-            </th>
-            <th>
-                Author
-            </th>
-            <th>
-                Created at
-            </th>
-            <th>
-                Active
-            </th>
-            <th>
-                Used in Project
-            </th>
-            </tr>
-            {todolist.map((note) => <TodoItem
-                itemnote = {note}
-                users = {users}
-                projects = {projects}
-                />)}
-            </tbody>
+        <div>
+            <table>
+                <tbody>
+                    <tr>
+                        <th>
+                            Text
+                        </th>
+                        <th>
+                            Author
+                        </th>
+                        <th>
+                            Created at
+                        </th>
+                        <th>
+                            Active
+                        </th>
+                        <th>
+                            Used in Project
+                        </th>
+                    </tr>
+                    {todolist.map((note) => <TodoItem
+                        itemnote = {note}
+                        users = {users}
+                        projects = {projects}
+                        deleteTODO={deleteTODO}
+                        />)}
+                </tbody>
             </table>
+
+            <Link to="/todo/create" className="link_btn">
+                New_TODO
+            </Link>
+        </div>
        )
     }
 
