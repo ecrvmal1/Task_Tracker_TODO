@@ -3,7 +3,7 @@ import '../App.css';
 import {Link} from "react-router-dom";
 import {useParams} from "react-router-dom";
 
-const TodoItem = ({itemnote,users,projects,deleteTODO}) => {
+const TodoItem = ({itemnote,users,projects,deleteTodo}) => {
 
     let activity =''
     let author_name = ''
@@ -49,7 +49,7 @@ const TodoItem = ({itemnote,users,projects,deleteTODO}) => {
             {project_name}
         </td>
           <td>
-            <button onClick={()=> deleteTODO(TODOList.id)}type='button'>Delete</button>
+            <button onClick={()=> deleteTodo(TODOList.id)}type='button'>Delete</button>
         </td>
     </tr>
 
@@ -57,7 +57,7 @@ const TodoItem = ({itemnote,users,projects,deleteTODO}) => {
  }
 
 
-const TODOList = ({todolist,projects,users,deleteTODO}) => {
+const TodoListForm = ({todolist,projects,users,deleteTodo}) => {
     return (
         <div>
             <table>
@@ -83,17 +83,17 @@ const TODOList = ({todolist,projects,users,deleteTODO}) => {
                         itemnote = {note}
                         users = {users}
                         projects = {projects}
-                        deleteTODO={deleteTODO}
+                        deleteTodo={deleteTodo}
                         />)}
                 </tbody>
             </table>
 
             <Link to="/todo/create" className="link_btn">
-                New_TODO
+                New TODO
             </Link>
         </div>
        )
     }
 
 
-export default TODOList
+export default TodoListForm

@@ -83,20 +83,38 @@ top: calc(100vh - 50px);
 
 }
 
-.LoginForm {
-display: block;
-width: 100px;
-padding: 20px;
+
+
+.input_line {
+display: flex;
+justify-content: spase-between;
+width: 360px;
+margin: 20px;
+margin-top: 20px;
+margin-bottom: 20px;
 }
 
-.LoginLine {
-margin: 5px;
-display: inline;
+.input_field1 {
+font: 16px;
+font-weight: 400;
+margin: 0;
+padding: 2px;
+display: inline-block;
+width: 150px;
+}
+
+.input_field2 {
+font: 16px;
+font-weight: 400;
+margin: 0;
+padding: 2px;
+display: inline-block;
+width: 200px;
 }
 
 .link_btn {
     display: block;
-    width: 100px;
+    width: 140px;
     font: bold 16px;
     margin-top: 15px;
     margin-left: 30px;
@@ -105,4 +123,8 @@ display: inline;
     color: #333333;
     padding: 2px 6px;
     border: 1px solid #CCCCCC;
+}
+
+.mrgn20{
+margin: 20px;
 }

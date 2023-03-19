@@ -29,7 +29,7 @@ const MenuDiv = ({username, status, logout}) => {
                 <li className="Menu-li">
                      {/* <a href="/TODO" > TODO</a> */}
                      {/* <Link to="/TODO" onClick={() => window.location.reload()}>TODO</Link> */}
-                     <Link to="/TODO" > TODO</Link>
+                     <Link to="/todos" > TODO</Link>
                 </li>
             </ul>
 

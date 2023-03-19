@@ -52,7 +52,7 @@ const ProjectItem = ({project, users, index, deleteProject}) => {
     )
 }
 
-const ProjectList = ({projects, users, deleteProject}) => {
+const ProjectListForm = ({projects, users, deleteProject}) => {
 
     return (
         <div>
@@ -97,4 +97,4 @@ const ProjectList = ({projects, users, deleteProject}) => {
     }
 
 
-export default ProjectList
+export default ProjectListForm
