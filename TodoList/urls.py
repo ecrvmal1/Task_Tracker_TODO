@@ -31,7 +31,7 @@ router = DefaultRouter()  # initiate the class
 # entry point = users , that we had imported
 router.register('users', UsersModelViewSet, basename='UserList')
 router.register('projects', ProjectModelViewSet, basename='ProjectList')
-router.register('TODO', TODOModelViewSet, basename='TODO_List')
+router.register('todo', TODOModelViewSet, basename='TODO_List')
 # router.register('books', UserModelViewSet)
 
 urlpatterns = [

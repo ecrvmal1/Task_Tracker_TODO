@@ -22,7 +22,7 @@ const UserItem = ({user}) => {
     )
 }
 
-const UserList = ({users}) => {
+const UserListForm = ({users}) => {
     return (
         <table>
             <tbody>
@@ -47,4 +47,4 @@ const UserList = ({users}) => {
     }
 
 
-export default UserList
+export default UserListForm
