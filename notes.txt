@@ -1,8 +1,0 @@
-admin   admin
-user1	admin
-user2	admin	
-user3	admin	
-user4	admin
-
-backend works fine @ :8000
-not contacted with frontend
