@@ -1,0 +1,116 @@
+[
+{
+  "model": "users.users",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$N8S7zZU6tNNDd4rXzWu5Hm$DXGXPigY1rDSliELq/NBwNYQR/akbBbc52uJfApXgSw=",
+    "last_login": "2023-09-22T18:54:46.003Z",
+    "is_superuser": true,
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2023-09-22T18:40:43.324Z",
+    "username": "admin",
+    "first_name": "admin",
+    "last_name": "admin",
+    "birthday_year": 1965,
+    "email": "admin@mail.ru",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+  {
+  "model": "users.users",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$N8S7zZU6tNNDd4rXzWu5Hm$DXGXPigY1rDSliELq/NBwNYQR/akbBbc52uJfApXgSw=",
+    "last_login": "2023-09-22T18:54:46.003Z",
+    "is_superuser": false,
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2023-09-22T18:40:43.324Z",
+    "username": "user1",
+    "first_name": "Andrey",
+    "last_name": "Andreev",
+    "birthday_year": 1966,
+    "email": "andrey@mail.ru",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+  {
+  "model": "users.users",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$N8S7zZU6tNNDd4rXzWu5Hm$DXGXPigY1rDSliELq/NBwNYQR/akbBbc52uJfApXgSw=",
+    "last_login": "2023-09-22T18:54:46.003Z",
+    "is_superuser": false,
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2023-09-22T18:40:43.324Z",
+    "username": "user2",
+    "first_name": "Ivan",
+    "last_name": "Ivanov",
+    "birthday_year": 1965,
+    "email": "ivan@mail.ru",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+  {
+  "model": "users.users",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$N8S7zZU6tNNDd4rXzWu5Hm$DXGXPigY1rDSliELq/NBwNYQR/akbBbc52uJfApXgSw=",
+    "last_login": "2023-09-22T18:54:46.003Z",
+    "is_superuser": false,
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2023-09-22T18:40:43.324Z",
+    "username": "user3",
+    "first_name": "Vladimir",
+    "last_name": "Vladimirov",
+    "birthday_year": 1965,
+    "email": "vladimir@mail.ru",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+  {
+  "model": "users.users",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$N8S7zZU6tNNDd4rXzWu5Hm$DXGXPigY1rDSliELq/NBwNYQR/akbBbc52uJfApXgSw=",
+    "last_login": "2023-09-22T18:54:46.003Z",
+    "is_superuser": false,
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2023-09-22T18:40:43.324Z",
+    "username": "user4",
+    "first_name": "Vasily",
+    "last_name": "Vasiliev",
+    "birthday_year": 1965,
+    "email": "vasily@mail.ru",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+  {
+  "model": "users.users",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$260000$N8S7zZU6tNNDd4rXzWu5Hm$DXGXPigY1rDSliELq/NBwNYQR/akbBbc52uJfApXgSw=",
+    "last_login": "2023-09-22T18:54:46.003Z",
+    "is_superuser": false,
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2023-09-22T18:40:43.324Z",
+    "username": "user5",
+    "first_name": "Alex",
+    "last_name": "Alexandrov",
+    "birthday_year": 1969,
+    "email": "alex@mail.ru",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
