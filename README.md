@@ -2,9 +2,9 @@
 ### Проект разработан на стажировке в компании "Докт24 - телемедицина, диагностика, консилиум"
 
 Функциональность:
-Users : Register / Login
-Projects : Create/List/Detailed_view/Delete
-Notes for project by author : Create/List/Detailed_view/Delete
+Users : Register / Login  
+Projects : Create/List/Detailed_view/Delete  
+Notes for project by author : Create/List/Detailed_view/Delete  
 
 
 ## Stack
