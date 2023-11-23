@@ -46,7 +46,7 @@ class App extends React.Component {
 //         const my_user = this.state.users.filter((item) =>{ return  [Number(+user)].includes(item.id) } );
 //         console.log ('users', this.state.users)
 //        console.log('user ', user, my_user)
-         axios.post('http://194.58.109.159:8000/api/projects/',data,{headers}).
+         axios.post('http://127.0.0.1:8000/api/projects/',data,{headers}).
             then(response => {
                 let new_project= response.data
                 this.setState({projects:[...this.state.projects, new_project]})
@@ -56,7 +56,7 @@ class App extends React.Component {
 
     deleteProject(id) {
         const headers = this.get_headers()
-        axios.delete(`http://194.58.109.159/api/projects/${id}`, {headers: headers})
+        axios.delete(`http://127.0.0.1:8000/api/projects/${id}`, {headers: headers})
             .then(response =>{
                 this.setState({projects:this.state.projects.filter((item) =>item.id !== id)})
         }).catch(error => console.log(error))
