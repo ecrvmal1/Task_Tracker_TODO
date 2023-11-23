@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-!al#j*@c#h#n3%1xly^%l*iv!rw)3+ow)@md+5-c^vt=+iv)vn
 DEBUG = True
 
 ALLOWED_HOSTS = [
-     '194.58.109.159'   # REG.RU server IP address
+     '194.58.109.159',   # REG.RU server IP address
      '178.21.10.181',
      '127.0.0.1',
      '79.165.88.90',
