@@ -1,21 +1,37 @@
-Современная платформа для обучения. Прогрессивный взгляд на простые вещи.
+# Task tracker "ToDo" 
+### Проект разработан на стажировке в компании "Докт24 - телемедицина, диагностика, консилиум"
 
-Учебный проект системы управления обучением, который разработан при прохождений обучения на факультете "
-Python-разработка", портал GeekBrains, курс `Основы Django`.
+## Функциональность:
+Task Tracker  - создавать и записывать задачи для сотрудников, с учетом проекта
 
-## Стек
+Users : Register / Login  
+Projects : Create/List/Detailed_view/Delete  
+Notes for project by author : Create/List/Detailed_view/Delete  
+
+
+## Stack
 
 - Python > 3.7
-    - isort, black, autoflake
     - Django < 3.3
-    - Celery[Redis]
-- VSCode
-- SQLite 3
+    - SQLite 3
 
-## Лицензия
+- Frontend: 
+  - REACT, JS
+    - react-dom
+    - axios
+    - bootstrap
+    - HTML/CSS
+
+## Licence
 
 MIT
 
-user2...user9 : admin
-admin : admin
+## Test Users/Passwords:
+user2...user9 : admin  
+admin : admin  
+
+## Deployment to production
+When make deployment to server, change ip addresses:
+in file /frontend/src/App.js  from "127.0.0.1" to "real server IP address"
+in file /todolist/T
 
