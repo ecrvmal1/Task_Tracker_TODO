@@ -35,4 +35,3 @@ When make deployment to server, change ip addresses:
 in file /frontend/src/App.js  from "127.0.0.1" to "real server IP address"
 in file /todolist/TodoList/settings.py add "real server IP address" to "ALLOWED_HOSTS"
 
-## Server runs at  http://194.58.109.159/
