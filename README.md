@@ -1,7 +1,9 @@
 # Task tracker "ToDo" 
 ### Проект разработан на стажировке в компании "Докт24 - телемедицина, диагностика, консилиум"
 
-Функциональность:
+## Функциональность:
+Task Tracker  - создавать и записывать задачи для сотрудников, с учетом проекта
+
 Users : Register / Login  
 Projects : Create/List/Detailed_view/Delete  
 Notes for project by author : Create/List/Detailed_view/Delete  
@@ -10,16 +12,15 @@ Notes for project by author : Create/List/Detailed_view/Delete
 ## Stack
 
 - Python > 3.7
-    - isort, black, autoflake
     - Django < 3.3
     - SQLite 3
-    - VSCode
 
 - Frontend: 
   - REACT, JS
     - react-dom
     - axios
     - bootstrap
+    - HTML/CSS
 
 ## Licence
 
