@@ -25,8 +25,9 @@ Notes for project by author : Create/List/Detailed_view/Delete
 
 MIT
 
-user2...user9 : admin
-admin : admin
+## Test Users/Passwords:
+user2...user9 : admin  
+admin : admin  
 
 ## Deployment to production
 When make deployment to server, change ip addresses:
